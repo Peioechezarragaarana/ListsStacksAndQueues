@@ -16,7 +16,7 @@ namespace Common
     public class IntList : IList
     {
         IntListNode First = null;
-
+        int pos = 0;
         //This method returns all the elements on the list as a string
         //Use it as an example on how to access all the elements on the list
         public string AsString()
@@ -38,11 +38,26 @@ namespace Common
         public void Add(int value)
         {
             //TODO #1: add a new integer to the end of the list
+
         }
 
         private IntListNode GetNode(int index)
         {
             //TODO #2: Return the element in position 'index'
+            int currentPos = 0;
+            IntListNode currentNode = First;
+            while (currentNode != null && currentPos < index)
+            {
+                if (currentNode.Value == index)
+                {
+                    return currentNode;
+                }
+                else
+                {
+                    currentNode = currentNode.Next;
+                    currentNode.Next = null;
+                }
+            }
             return null;
         }
 
