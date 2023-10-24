@@ -5,6 +5,7 @@ namespace Common
     {
         //TODO #1: Declare a List inside this object class to store the objects. Choose the most appropriate object class
 
+
         public string AsString()
         {
             //TODO #2: Return the list as a string. Use the method already implemented in your list

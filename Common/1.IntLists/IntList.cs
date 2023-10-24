@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.Design;
 using System.Text.Json.Nodes;
+using System.Timers;
 using System.Transactions;
 
 namespace Common
@@ -40,7 +41,7 @@ namespace Common
             return output;
         }
 
-        
+
         public void Add(int value)
         {
             //TODO #1: add a new integer to the end of the list
@@ -58,7 +59,6 @@ namespace Common
             //Con menos orden de complejidad O(1)
             IntListNode newNode;
             newNode = new IntListNode(value);
-            IntListNode lasFirst = Last;
             if (First == null)
             {
                 First = newNode;
@@ -86,55 +86,55 @@ namespace Common
             while (currentPos < index && currentNode.Next != null)
             {
                 currentNode = currentNode.Next;
-                currentPos= currentPos + 1; 
+                currentPos = currentPos + 1;
             }
             if (currentPos == index)
             {
                 return currentNode;
             }
-  
+
             return null;
         }
 
-        
+
         public int Get(int index)
 
-            //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). O if the position is out of bounds
-            /**
-            IntListNode intListNode = GetNode(index);
-            if (intListNode != null)
-            {
-                return intListNode.Value;
-            }
-            else
-            {
-                return 0;
-            }
+        //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). O if the position is out of bounds
+        /**
+        IntListNode intListNode = GetNode(index);
+        if (intListNode != null)
+        {
+            return intListNode.Value;
         }
-            */
+        else
+        {
+            return 0;
+        }
+    }
+        */
+        {
+            //TODO #2: Return the element in position 'index'
+            int currentPos = 0;
+            IntListNode currentNode = First;
+            if (First == null)
             {
-                //TODO #2: Return the element in position 'index'
-                int currentPos = 0;
-                IntListNode currentNode = First;
-                if (First == null)
-                {
-                    return 0;
-                }
-                while (currentPos < index && currentNode.Next != null)
-                {
-                    currentNode = currentNode.Next;
-                    currentPos = currentPos + 1;
-                }
-                if (currentPos == index)
-                {
-                    return currentNode.Value;
-                }
-
                 return 0;
             }
+            while (currentPos < index && currentNode.Next != null)
+            {
+                currentNode = currentNode.Next;
+                currentPos = currentPos + 1;
+            }
+            if (currentPos == index)
+            {
+                return currentNode.Value;
+            }
+
+            return 0;
+        }
 
 
-            public int Count()
+        public int Count()
         {
             //TODO #4: return the number of elements on the list
             // Sin mejorar
@@ -159,60 +159,37 @@ namespace Common
         public void Remove(int index)
         {
             //TODO #5: remove the element on the index-th position. Do nothing if position is out of bounds
-            int currentPos = 0;
-
-            IntListNode node = GetNode(index);
-            if (node.cont != 1) { }
-            IntListNode antNode = GetNode(index - 1);
-            IntListNode nextNode = GetNode(index + 1);
-
-
-            if (node != null)
+            if (index==0) 
             {
-                if (node.Next != null)
+                if (First!=null) 
                 {
-                    antNode.Next = node;
-
+                    First = First.Next;
+                    pos = pos - 1;
                 }
-                else
+                return;
+                
+            }
+            else if (index >= 1)
+            {
+
+                if (GetNode(index) != null)
                 {
-                    antNode.Next = null;
-                    Last = antNode;
+                        GetNode(index - 1).Next = GetNode(index + 1);
+                        Last = GetNode(index - 1);
                 }
 
-                pos = pos - 1;
-            }
-            else
-            {
-                First = nextNode;
-            }
+                    pos = pos - 1;
+                }
+            
+           
         }
 
-           
-
-            /**
-            while ( currentPos < index - 1 && node != null) 
-            { 
-            
-                node = node.Next;   
-                currentPos++;
-            
-            }
-            antNode= node;     
-
-            if ( node.Next!=null && )
-            {
-                node.
-            }
-            pos = pos - 1;
-            */
-
-
-        
         public void Clear()
         {
             //TODO #6: remove all the elements on the list
             First = null;
+            Last = null;    
+            pos = 0;
         }
     }
 }
