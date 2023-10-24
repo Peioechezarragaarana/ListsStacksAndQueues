@@ -45,18 +45,7 @@ namespace Common
         public void Add(int value)
         {
             //TODO #1: add a new integer to the end of the list
-            /**
-            IntListNode node = First;
-            IntListNode newNode;
-            while (node != null)
-            {
-                node = node.Next;
-            }
-            newNode = new IntListNode(value);
-            node.Next = newNode;  
-            pos ++;
-            */
-            //Con menos orden de complejidad O(1)
+         
             IntListNode newNode;
             newNode = new IntListNode(value);
             if (First == null)
@@ -100,18 +89,7 @@ namespace Common
         public int Get(int index)
 
         //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). O if the position is out of bounds
-        /**
-        IntListNode intListNode = GetNode(index);
-        if (intListNode != null)
-        {
-            return intListNode.Value;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-        */
+        
         {
             //TODO #2: Return the element in position 'index'
             int currentPos = 0;
@@ -137,22 +115,7 @@ namespace Common
         public int Count()
         {
             //TODO #4: return the number of elements on the list
-            // Sin mejorar
-            /**
-            IntListNode currentNode = First;
-            int cont= 0;    
-                
-            while (currentNode != null)
-            {
-                currentNode= currentNode.Next;  
-                 cont ++;
-            }
-
-            return cont;
-        }*/
-
-
-            //MEJORADO 
+          
             return pos;
         }
 

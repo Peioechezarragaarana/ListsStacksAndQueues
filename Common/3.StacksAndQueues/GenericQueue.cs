@@ -3,8 +3,12 @@ namespace Common
 
     public class GenericQueue<T> : IPushPop<T>
     {
+        GenericList<T> myList;
         //TODO #1: Declare a List inside this object class to store the objects. Choose the most appropriate object class
-
+        public GenericQueue()
+        {
+            myList = new GenericList<T>();
+        }
 
         public string AsString()
         {
